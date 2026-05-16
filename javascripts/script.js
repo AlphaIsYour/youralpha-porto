@@ -617,7 +617,7 @@ $(() => {
     },
 
     mounted() {
-      axios.get("/timeline").then((response) => {
+      axios.get("/api/timeline.php").then((response) => {
         this.timeline = response.data;
 
         this.timeline.forEach((tl) => {
@@ -1115,4 +1115,123 @@ $(() => {
       tl.reverse();
     }
   );
+});
+
+// Dynamic content loading from API
+$(function() {
+  var API_BASE = '/api';
+
+  // Projects
+  if ($('#hover-projects').length) {
+    new Vue({
+      el: '#hover-projects',
+      data: { projects: [] },
+      computed: {
+        featuredProject: function() {
+          return this.projects.find(function(p) { return p.is_featured == 1; }) || this.projects[0];
+        },
+        otherProjects: function() {
+          return this.projects.filter(function(p) { return p.is_featured != 1; });
+        },
+        projectColumns: function() {
+          var half = Math.ceil(this.otherProjects.length / 2);
+          return [this.otherProjects.slice(0, half), this.otherProjects.slice(half)];
+        }
+      },
+      mounted: function() {
+        var self = this;
+        axios.get(API_BASE + '/projects.php').then(function(r) { self.projects = r.data; });
+      }
+    });
+  }
+
+  // About
+  if ($('#hover-readme').length) {
+    new Vue({
+      el: '#hover-readme',
+      data: { aboutData: {} },
+      mounted: function() {
+        var self = this;
+        axios.get(API_BASE + '/about.php').then(function(r) { self.aboutData = r.data; });
+      }
+    });
+  }
+
+  // Writing
+  if ($('#hover-writing').length) {
+    new Vue({
+      el: '#hover-writing',
+      data: { writingEntries: [] },
+      mounted: function() {
+        var self = this;
+        axios.get(API_BASE + '/writing.php').then(function(r) { self.writingEntries = r.data; });
+      }
+    });
+  }
+
+  // Instagram
+  if ($('#hover-new-instagram').length) {
+    new Vue({
+      el: '#hover-new-instagram',
+      data: { instagramPosts: [] },
+      mounted: function() {
+        var self = this;
+        axios.get(API_BASE + '/instagram.php').then(function(r) { self.instagramPosts = r.data; });
+      }
+    });
+  }
+
+  // Timeline / Work history
+  if ($('#hover-laptop').length) {
+    new Vue({
+      el: '#hover-laptop',
+      data: { timelineEntries: [] },
+      mounted: function() {
+        var self = this;
+        axios.get(API_BASE + '/timeline.php').then(function(r) { self.timelineEntries = r.data; });
+      }
+    });
+  }
+
+  // Music
+  if ($('#hover-music').length) {
+    new Vue({
+      el: '#hover-music',
+      data: { tracks: [] },
+      mounted: function() {
+        var self = this;
+        axios.get(API_BASE + '/music.php').then(function(r) { self.tracks = r.data; });
+      }
+    });
+  }
+
+  // Tweets
+  if ($('#hover-new-twitter').length) {
+    new Vue({
+      el: '#hover-new-twitter',
+      data: { tweets: [], profile: {} },
+      mounted: function() {
+        var self = this;
+        axios.get(API_BASE + '/tweets.php').then(function(r) {
+          self.tweets = r.data.tweets || [];
+          self.profile = r.data.profile || {};
+        });
+      }
+    });
+  }
+
+  // GitHub
+  if ($('#hover-github').length) {
+    new Vue({
+      el: '#hover-github',
+      data: { repos: [], profile: {} },
+      mounted: function() {
+        var self = this;
+        axios.get(API_BASE + '/github.php').then(function(r) {
+          self.repos = r.data.repos || [];
+          self.profile = r.data.profile || {};
+        });
+      }
+    });
+  }
 });

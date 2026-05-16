@@ -17,10 +17,10 @@
     />
     <link id="favicon" rel="shortcut icon" href="images/favicon.ico" />
     <script src="javascripts/jquery.min.js" defer></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <link href="stylesheets/lity.css" rel="stylesheet" />
 
-    <!-- <script src="https://unpkg.com/vue-lazyload@1.3.3/vue-lazyload.js"></script> -->
+    <script src="https://unpkg.com/vue-lazyload@1.3.3/vue-lazyload.js"></script>
     <script src="javascripts/TweenMax.min.js" defer></script>
     <script src="javascripts/MorphSVGPlugin.min.js" defer></script>
     <script src="javascripts/DrawSVGPlugin.min.js" defer></script>
@@ -47,30 +47,25 @@
     ></script>
     <meta name="twitter:widgets:autoload" content="off" />
     <meta
-      content="I'm Youralpha, the founder of ReadMe. I'm a developer and designer who loves building experiences (both online and off)!"
+      content="I'm Youralpha, an Information Technology student at Brawijaya University. I'm a developer and designer who loves building experiences (both online and off)!"
       name="description"
     />
-    <link rel="image_src" href="http://127.0.0.1:5500/images/embed.png?" />
+    <link rel="image_src" href="images/embed.png" />
     <meta property="og:title" content="Youralpha" />
     <meta
       property="og:description"
-      content="I'm Youralpha, the founder of ReadMe. I'm a developer and designer who loves building experiences (both online and off)!"
+      content="I'm Youralpha, an Information Technology student at Brawijaya University. I'm a developer and designer who loves building experiences (both online and off)!"
     />
-    <meta
-      property="og:image"
-      content="http://127.0.0.1:5500/images/embed.png?"
-    />
+    <meta property="og:image" content="images/embed.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@youralpha" />
     <meta name="twitter:title" content="Youralpha" />
     <meta
       name="twitter:description"
-      content="I'm Youralpha, the founder of ReadMe. I'm a developer and designer who loves building experiences (both online and off)!"
+      content="I'm Youralpha, an Information Technology student at Brawijaya University. I'm a developer and designer who loves building experiences (both online and off)!"
     />
-    <meta
-      name="twitter:image"
-      content="http://127.0.0.1:5500/images/embed.png?"
-    />
+    <meta name="twitter:image" content="images/embed.png" />
+    <style>[v-cloak] { display: none; }</style>
   </head>
   <body class="preload hide-window">
     <div class="border"></div>
@@ -102,7 +97,7 @@ h2 Founder, ReadMe-->
           <a class="fab fa-twitter" href="https://twitter.com/youralpha"></a>
           <a class="fab fa-instagram" href="https://instagram.com/eno4lph_"></a>
           <a class="fab fa-github" href="https://github.com/AlphaIsYour"></a>
-          <a class="fab fa-readme" href="http://readme.com"></a>
+          <a class="fab fa-github" href="https://github.com/AlphaIsYour"></a>
         </div>
       </div>
       <div class="greg">
@@ -116,7 +111,7 @@ h2 Founder, ReadMe-->
               <div class="owlbert-parent">
                 <div
                   class="owlbert no-move hover"
-                  data-title="ReadMe"
+                  data-title="About Me"
                   data-hover="readme"
                   data-position='{"bottom": 80, "left": 230, "transform-origin": "50% 100%"}'
                   data-bounce="up"
@@ -135,7 +130,7 @@ h2 Founder, ReadMe-->
               <div class="owlbert-parent-night">
                 <div
                   class="owlbert-night no-move hover"
-                  data-title="ReadMe"
+                  data-title="About Me"
                   data-hover="readme"
                   data-position='{"bottom": 80, "left": 230, "transform-origin": "50% 100%"}'
                   data-bounce="up"
@@ -278,7 +273,7 @@ h2 Founder, ReadMe-->
                 </g>
               </svg>
             </div>
-            <div class="label-text">ReadMe</div>
+            <div class="label-text">About Me</div>
           </div>
           <div class="window-label label">
             <div class="label-arrow">
@@ -548,7 +543,7 @@ h2 Founder, ReadMe-->
                 </g>
               </svg>
             </div>
-            <div class="label-text">ReadMe</div>
+            <div class="label-text">About Me</div>
           </div>
           <div
             class="instagram hover-new no-move"
@@ -806,320 +801,62 @@ h2 Founder, ReadMe-->
         </div>
       </div>
       <div id="hover-new">
-        <div id="hover-new-instagram">
-          <a
-            class="item"
-            href="https://www.instagram.com/p/CJmWlHJpo98/"
-            target="_blank"
-          >
-            <div
-              class="item-inside"
-              style="background-image: url('images/instagram/CJmWlHJpo98.jpg')"
-            ></div>
-          </a>
-          <a
-            class="item"
-            href="https://www.instagram.com/p/B9sR2C8JUX3/"
-            target="_blank"
-          >
-            <div
-              class="item-inside"
-              style="background-image: url('images/instagram/B9sR2C8JUX3.jpg')"
-            ></div>
-          </a>
-          <a
-            class="item"
-            href="https://www.instagram.com/p/ByMB8tKJWIF/"
-            target="_blank"
-          >
-            <div
-              class="item-inside"
-              style="background-image: url('images/instagram/ByMB8tKJWIF.jpg')"
-            ></div>
-          </a>
-          <a
-            class="item"
-            href="https://www.instagram.com/p/Bx2Xu-3JaK6/"
-            target="_blank"
-          >
-            <div
-              class="item-inside"
-              style="background-image: url('images/instagram/Bx2Xu-3JaK6.jpg')"
-            ></div>
+        <div id="hover-new-instagram" v-cloak>
+          <a class="item" v-for="ig in instagramPosts" :key="ig.id" :href="ig.post_url" target="_blank">
+            <div class="item-inside" :style="'background-image: url(' + ig.image_url + ')'"></div>
           </a>
           <div class="clearfix"></div>
         </div>
-        <div id="hover-new-twitter">
-          <div id="hover-twitter-left">
-            <blockquote class="twitter-tweet">
-              <a
-                href="https://twitter.com/gkoberger/status/1108046737208459264?ref_src=twsrc%5Etfw"
-              ></a>
-            </blockquote>
-          </div>
-          <div id="hover-twitter-right">
-            <blockquote class="twitter-tweet">
-              <a
-                href="https://twitter.com/gkoberger/status/1351271003989544965?ref_src=twsrc%5Etfw"
-              ></a>
-            </blockquote>
-          </div>
-          <div class="clearfix"></div>
-          <div class="callout">
-            <div class="strong">
-              You've made it this far, so you should probably just follow me!
+        <div id="hover-new-twitter" v-cloak>
+          <div class="twitter-header">
+            <div class="cloud">
+              <div class="cloud-1"></div>
+              <div class="cloud-2"></div>
+              <div class="cloud-3"></div>
+              <div class="cloud-inside"></div>
             </div>
-            <a class="btn" href="https://twitter.com/gkoberger">
-              <i class="fab fa-twitter"></i>
-              @youralpha
+            <div class="twitter-info">
+              <i class="fa fa-twitter"></i>
+              <strong>{{ profile.username || '@youralpha' }}</strong>
+              &middot;{{ (profile.followers || 0).toLocaleString() }} followers &middot;{{ (profile.tweet_count || 0).toLocaleString() }} tweets
+            </div>
+          </div>
+          <div class="tweets">
+            <a class="tweet" v-for="t in tweets" :key="t.id" :href="t.tweet_url" target="_blank">
+              <div class="bio">
+                <div class="avatar"></div>
+                <strong>{{ profile.username || '@youralpha' }} &nbsp;</strong>
+                {{ t.tweet_date }}
+                <div class="stats">
+                  <div class="t-retweet"><i class="fa fa-retweet"></i> {{ Number(t.retweets).toLocaleString() }}</div>
+                  <div class="t-like"><i class="fa fa-heart"></i> {{ Number(t.likes).toLocaleString() }}</div>
+                </div>
+              </div>
+              {{ t.tweet_text }}<br/>
+              <template v-if="t.images">
+                <img v-for="(img, i) in JSON.parse(t.images)" :key="i" :src="img" style="display:inline-block; width:74px; margin-top:20px;" />
+              </template>
             </a>
+            <div class="follow-me">
+              Like what you see?<a class="btn" :href="'https://twitter.com/' + (profile.username || 'youralpha').replace('@','')">Follow {{ profile.username || '@youralpha' }} on Twitter</a>
+            </div>
           </div>
         </div>
       </div>
       <div id="modal-content">
-        <div id="hover-projects">
-          <div class="project-major project-readme">
-            <a href="https://readme.io">
-              <img src="images/readme-white.svg" />
-              <p>Interactive API Documentation</p>
-            </a>
-          </div>
-          <div class="project-major project-startupescape">
-            <a href="https://startupescape.com">
-              <img src="images/startupescape.svg" />
-              <p>Startup-themed Escape Room</p>
+        <div id="hover-projects" v-cloak>
+          <div class="project-major project-readme" v-if="featuredProject">
+            <a :href="featuredProject.url">
+              <i :class="'fas ' + featuredProject.icon_class" :style="'font-size: 48px; color: ' + featuredProject.icon_color"></i>
+              <p>{{ featuredProject.name }}</p>
             </a>
           </div>
           <div id="projects-list">
-            <div class="project-col">
-              <a class="project project-wapi" href="https://wapi.fm/">
-                <i class="icon icon-radio" style="color: #981ddf"></i>
-                <strong>WAPI</strong>
-                <p>
-                  An ephemeral radio station about DX that I broadcasted live
-                  for 24 hours straight.
-                </p>
-              </a>
-              <a
-                class="project project-readmebuild"
-                href="https://readme.build"
-              >
-                <i class="icon icon-hammer-wrench" style="color: #261d52"></i>
-                <strong>ReadMe Build</strong>
-                <p>
-                  Build makes it dead simple to create, deploy and share
-                  world-class APIs in minutes.
-                </p>
-              </a>
-              <a
-                class="project project-stacksort"
-                href="https://gkoberger.github.io/stacksort/"
-              >
-                <i class="icon icon-shuffle" style="color: #3a91d8"></i>
-                <strong>Stacksort</strong>
-                <p>
-                  An implementation of xkcd's StackSort from its 'Inefficient
-                  Sorting Algorithms' comic.
-                </p>
-              </a>
-              <a
-                class="project project-startupnotes"
-                href="https://startupnotes.org"
-              >
-                <i class="icon icon-pencil3" style="color: #cb5704"></i>
-                <strong>Startup Notes</strong>
-                <p>
-                  Every year, I doodle notes from Y Combinator's Startup School
-                  conference!
-                </p>
-              </a>
-              <a
-                class="project project-startupplaybook"
-                href="http://playbook.samaltman.com/"
-              >
-                <i class="icon icon-bookmark" style="color: #cb5704"></i>
-                <strong>Startup Playbook</strong>
-                <p>
-                  I illustrated a guide to startups written by Sam Altman from Y
-                  Combinator
-                </p>
-              </a>
-              <a class="project project-slackmoji" href="http://slackmoji.com">
-                <i class="icon icon-smile" style="color: #cf1e69"></i>
-                <strong>Slackmoji</strong>
-                <p>
-                  A Chrome extension that makes it easy to find and add emojis
-                  to Slack
-                </p>
-              </a>
-              <a
-                class="project project-tracktrump"
-                href="http://track-trump.com"
-              >
-                <i class="icon icon-flag" style="color: #ae4244"></i>
-                <strong>Track Trump</strong>
-                <p>
-                  Built the website for Track Trump, a project that tracks
-                  Trump's first 100 days
-                </p>
-              </a>
-            </div>
-            <div class="project-col">
-              <a
-                class="project project-phileasfogg"
-                href="http://phileasandfogg.com"
-              >
-                <i class="icon icon-plane" style="color: #16a05d"></i>
-                <strong>Phileas &amp;Fogg</strong>
-                <p>
-                  An experimental traveling startup project I founded and ran in
-                  Costa Rica back in 2014
-                </p>
-              </a>
-              <a
-                class="project project-apimixtape"
-                href="http://apimixtape.com"
-              >
-                <i class="icon icon-mic2" style="color: #503457"></i>
-                <strong>API Mixtape</strong>
-                <p>
-                  At ReadMe, we put on a 300-person day-long conference about
-                  building APIs
-                </p>
-              </a>
-              <a
-                class="project project-greylocku"
-                href="http://2014.greylocku.com.s3-website-us-east-1.amazonaws.com/"
-              >
-                <i class="icon icon-graduation-hat" style="color: #279dd3"></i>
-                <strong>GreylockU</strong>
-                <p>
-                  A superhero-themed homepage for Greylock Partner's university
-                  recruiting program
-                </p>
-              </a>
-              <a
-                class="project project-greylockuhackfest"
-                href="http://greylockuhackfest2015.s3-website-us-west-2.amazonaws.com/hackfest/"
-              >
-                <i class="icon icon-medal-empty" style="color: #5a3950"></i>
-                <strong>GreylockU Hackfest</strong>
-                <p>
-                  Designed and built the website for Greylock's 24-hour
-                  hackathon, which goes from day to night
-                </p>
-              </a>
-              <a
-                class="project project-ratemydocs"
-                href="http://readme.io/ratemydocs/"
-              >
-                <i class="icon icon-license" style="color: #9200dd"></i>
-                <strong>RateMyDocs</strong>
-                <p>
-                  A little tool that tells you how good your documentation is
-                  compared to everyone else
-                </p>
-              </a>
-              <a
-                class="project project-olive"
-                href="https://www.imdb.com/title/tt2125574/"
-              >
-                <i class="icon icon-film" style="color: #6e7f91"></i>
-                <strong>Olive</strong>
-                <p>
-                  I made the movie poster and website for Olive, the first
-                  full-length movie shot on a cell phone.
-                </p>
-              </a>
-              <a
-                class="project project-apisipas"
-                href="https://www.meetup.com/apidiscovery/"
-              >
-                <i class="icon icon-users2" style="color: #e28203"></i>
-                <strong>APIs &amp;IPAs</strong>
-                <p>
-                  A monthly meetup where we have different people show off their
-                  APIs... and of course, there's beer!
-                </p>
-              </a>
-            </div>
-            <div class="project-col">
-              <a
-                class="project project-producthuntrealorfake"
-                href="https://realorfake.ph"
-              >
-                <i
-                  class="icon icon-mustache-glasses"
-                  style="color: #ff3b03"
-                ></i>
-                <strong>Product Hunt Real or Fake</strong>
-                <p>
-                  A game that proves no idea is crazy enough that someone in SF
-                  isn't legitimately working on it
-                </p>
-              </a>
-              <a class="project project-huluwithme" href="http://huluwith.me">
-                <i class="icon icon-tv" style="color: #7dac22"></i>
-                <strong>Hulu With Me</strong>
-                <p>
-                  An add-on that let you sync Hulu across multiple computers so
-                  you could watch together (unmaintained)
-                </p>
-              </a>
-              <a
-                class="project project-startupnotesbook"
-                href="https://www.forbes.com/sites/brentbeshore/2013/11/27/startup-notes-gives-back-more-than-inspiration/"
-              >
-                <i class="icon icon-book" style="color: #966d75"></i>
-                <strong>Startup Notes book</strong>
-                <p>
-                  I published a physical book of startup advice from YC's
-                  Startup School, and donated all profits to Watsi
-                </p>
-              </a>
-              <a
-                class="project project-bugzillajs"
-                href="https://addons.mozilla.org/en-US/firefox/addon/bugzillajs/"
-              >
-                <i class="icon icon-bug" style="color: #ffb505"></i>
-                <strong>BugzillaJS</strong>
-                <p>
-                  A plugin for Bugzilla (think open-source JIRA) that adds a ton
-                  of usability improvements
-                </p>
-              </a>
-              <a
-                class="project project-rsanfrancisco"
-                href="http://reddit.com/r/sanfrancisco"
-              >
-                <i class="icon icon-pushpin" style="color: #957d19"></i>
-                <strong>r/sanfrancisco</strong>
-                <p>
-                  I founded and currently moderate r/sanfrancisco, the subreddit
-                  for San Francisco on Reddit
-                </p>
-              </a>
-              <a
-                class="project project-produckhunt"
-                href="http://produckhunt.co"
-              >
-                <i class="icon icon-gun" style="color: #ff4607"></i>
-                <strong>Produck Hunt</strong>
-                <p>
-                  A Duck Hunt parody that uses your cell phone for shooting.
-                  First place in the Product Hunt hackathon!
-                </p>
-              </a>
-              <a
-                class="project project-rit"
-                href="https://www.youtube.com/watch?v=fGkvIfXLRM8"
-              >
-                <i class="icon icon-wall" style="color: #f77104"></i>
-                <strong>RIT48</strong>
-                <p>
-                  Ian Mikutel and I ran RIT48 at our university, long before
-                  hackathons (or we) were cool
-                </p>
+            <div class="project-col" v-for="(col, idx) in projectColumns" :key="idx">
+              <a class="project" v-for="p in col" :key="p.id" :href="p.url">
+                <i :class="'icon ' + p.icon_class" :style="'color: ' + p.icon_color"></i>
+                <strong>{{ p.name }}</strong>
+                <p>{{ p.description }}</p>
               </a>
             </div>
           </div>
@@ -2736,256 +2473,27 @@ h2 Founder, ReadMe-->
             </div>
           </div>
         </div>
-        <div id="hover-music">
+        <div id="hover-music" v-cloak>
           <div class="music">
-            <div class="m-bar" style="background-color: #eb4de0"></div>
-            <div class="m-bar" style="background-color: #e74ee0"></div>
-            <div class="m-bar" style="background-color: #e450e0"></div>
-            <div class="m-bar" style="background-color: #e052e1"></div>
-            <div class="m-bar" style="background-color: #dd53e1"></div>
-            <div class="m-bar" style="background-color: #da55e1"></div>
-            <div class="m-bar" style="background-color: #d657e2"></div>
-            <div class="m-bar" style="background-color: #d358e2"></div>
-            <div class="m-bar" style="background-color: #d05ae2"></div>
-            <div class="m-bar" style="background-color: #cc5ce3"></div>
-            <div class="m-bar" style="background-color: #c95de3"></div>
-            <div class="m-bar" style="background-color: #c65fe3"></div>
-            <div class="m-bar" style="background-color: #c261e4"></div>
-            <div class="m-bar" style="background-color: #bf62e4"></div>
-            <div class="m-bar" style="background-color: #bc64e4"></div>
-            <div class="m-bar" style="background-color: #b866e5"></div>
-            <div class="m-bar" style="background-color: #b567e5"></div>
-            <div class="m-bar" style="background-color: #b269e5"></div>
-            <div class="m-bar" style="background-color: #ae6be6"></div>
-            <div class="m-bar" style="background-color: #ab6ce6"></div>
-            <div class="m-bar" style="background-color: #a86ee6"></div>
-            <div class="m-bar" style="background-color: #a470e7"></div>
-            <div class="m-bar" style="background-color: #a171e7"></div>
-            <div class="m-bar" style="background-color: #9e73e7"></div>
-            <div class="m-bar" style="background-color: #9a75e8"></div>
-            <div class="m-bar" style="background-color: #9777e8"></div>
-            <div class="m-bar" style="background-color: #9478e8"></div>
-            <div class="m-bar" style="background-color: #907ae9"></div>
-            <div class="m-bar" style="background-color: #8d7ce9"></div>
-            <div class="m-bar" style="background-color: #8a7de9"></div>
-            <div class="m-bar" style="background-color: #867fea"></div>
-            <div class="m-bar" style="background-color: #8381ea"></div>
-            <div class="m-bar" style="background-color: #8082ea"></div>
-            <div class="m-bar" style="background-color: #7c84eb"></div>
-            <div class="m-bar" style="background-color: #7986eb"></div>
-            <div class="m-bar" style="background-color: #7687eb"></div>
-            <div class="m-bar" style="background-color: #7289ec"></div>
-            <div class="m-bar" style="background-color: #6f8bec"></div>
-            <div class="m-bar" style="background-color: #6c8cec"></div>
-            <div class="m-bar" style="background-color: #688eed"></div>
-            <div class="m-bar" style="background-color: #6590ed"></div>
-            <div class="m-bar" style="background-color: #6291ed"></div>
-            <div class="m-bar" style="background-color: #5e93ee"></div>
-            <div class="m-bar" style="background-color: #5b95ee"></div>
-            <div class="m-bar" style="background-color: #5896ee"></div>
-            <div class="m-bar" style="background-color: #5498ef"></div>
-            <div class="m-bar" style="background-color: #519aef"></div>
-            <div class="m-bar" style="background-color: #4e9bef"></div>
-            <div class="m-bar" style="background-color: #4a9df0"></div>
-            <div class="m-bar" style="background-color: #479ff0"></div>
+            <div class="m-bar" v-for="i in 51" :key="i" :style="'background-color: hsl(' + (290 + i * 2) + ', 70%, ' + (55 + i * 0.5) + '%)'"></div>
           </div>
-          <div>
-            <a
-              href="https://open.spotify.com/search/results/Watch Me - Labi Siffre"
-            >
+          <div v-for="track in tracks" :key="track.id">
+            <a :href="track.spotify_url">
               <i class="far fa-play-circle"></i>
-              <strong>Watch Me</strong>
-              by Labi Siffre &nbsp;<time
-                datetime="2025-06-24T18:16:20.000Z"
-              ></time>
-            </a>
-          </div>
-          <div>
-            <a
-              href="https://open.spotify.com/search/results/Foxglove - Murder By Death"
-            >
-              <i class="far fa-play-circle"></i>
-              <strong>Foxglove</strong>
-              by Murder By Death &nbsp;<time
-                datetime="2025-06-19T23:16:56.000Z"
-              ></time>
-            </a>
-          </div>
-          <div>
-            <a
-              href="https://open.spotify.com/search/results/The Ballad of the Kingsmen - Todd Snider"
-            >
-              <i class="far fa-play-circle"></i>
-              <strong>The Ballad of the Kingsmen</strong>
-              by Todd Snider &nbsp;<time
-                datetime="2025-06-19T23:11:54.000Z"
-              ></time>
-            </a>
-          </div>
-          <div>
-            <a
-              href="https://open.spotify.com/search/results/Secrets on Our Lips - Astronautalis"
-            >
-              <i class="far fa-play-circle"></i>
-              <strong>Secrets on Our Lips</strong>
-              by Astronautalis &nbsp;<time
-                datetime="2025-06-19T23:08:22.000Z"
-              ></time>
-            </a>
-          </div>
-          <div>
-            <a
-              href="https://open.spotify.com/search/results/The Wild Mercury - Vandaveer"
-            >
-              <i class="far fa-play-circle"></i>
-              <strong>The Wild Mercury</strong>
-              by Vandaveer &nbsp;<time
-                datetime="2025-06-19T23:04:39.000Z"
-              ></time>
-            </a>
-          </div>
-          <div>
-            <a
-              href="https://open.spotify.com/search/results/Little Trouble - Better Oblivion Community Center"
-            >
-              <i class="far fa-play-circle"></i>
-              <strong>Little Trouble</strong>
-              by Better Oblivion Community Center &nbsp;<time
-                datetime="2025-06-19T23:00:03.000Z"
-              ></time>
-            </a>
-          </div>
-          <div>
-            <a
-              href="https://open.spotify.com/search/results/Oh Lord - Foxy Shazam"
-            >
-              <i class="far fa-play-circle"></i>
-              <strong>Oh Lord</strong>
-              by Foxy Shazam &nbsp;<time
-                datetime="2025-06-19T22:54:59.000Z"
-              ></time>
-            </a>
-          </div>
-          <div>
-            <a
-              href="https://open.spotify.com/search/results/Into The Wild - Lewis Watson"
-            >
-              <i class="far fa-play-circle"></i>
-              <strong>Into The Wild</strong>
-              by Lewis Watson &nbsp;<time
-                datetime="2025-06-19T22:52:02.000Z"
-              ></time>
+              <strong>{{ track.song }}</strong>
+              by {{ track.artist }} &nbsp;<time :datetime="track.played_at"></time>
             </a>
           </div>
         </div>
-        <div id="hover-laptop">
+        <div id="hover-laptop" v-cloak>
           <div class="work-slider">
             <div id="work-history"></div>
             <div id="work-history-open"></div>
-            <div class="work-item work-item-0 work-item-readme">
-              <div class="work-dot"></div>
-              <div class="work-line"></div>
-              <div
-                class="logo"
-                style="background-image: url(/images/resume/readme.svg)"
-              ></div>
-              <time>June 2015</time>
-              <strong>ReadMe</strong>
-              <p>
-                I founded ReadMe, a way to create beautiful, interactive API
-                documentation.
-              </p>
-              <label>founder</label>
-            </div>
-            <div class="work-item work-item-1 work-item-watsi">
-              <div class="work-dot"></div>
-              <div class="work-line"></div>
-              <div
-                class="logo"
-                style="background-image: url(/images/resume/watsi.svg)"
-              ></div>
-              <time>April 2014</time>
-              <strong>Watsi</strong>
-              <p>
-                Watsi brings high-impact, low-cost healthcare to people in need.
-                You should donate!
-              </p>
-              <label>contractor</label>
-            </div>
-            <div class="work-item work-item-2 work-item-warriors">
-              <div class="work-dot"></div>
-              <div class="work-line"></div>
-              <div
-                class="logo"
-                style="background-image: url(/images/resume/warriors.svg)"
-              ></div>
-              <time>March 2013</time>
-              <strong>Warriors</strong>
-              <p>
-                Point guard. Just kidding. I built some dashboards showing
-                business-y stuff.
-              </p>
-              <label>contractor</label>
-            </div>
-            <div class="work-item work-item-3 work-item-greylock">
-              <div class="work-dot"></div>
-              <div class="work-line"></div>
-              <div
-                class="logo"
-                style="background-image: url(/images/resume/greylock.svg)"
-              ></div>
-              <time>November 2012</time>
-              <strong>Greylock</strong>
-              <p>
-                I helped Greylock with their superhero-themed college recruiting
-                websites.
-              </p>
-              <label>contractor</label>
-            </div>
-            <div class="work-item work-item-4 work-item-mozilla">
-              <div class="work-dot"></div>
-              <div class="work-line"></div>
-              <div
-                class="logo"
-                style="background-image: url(/images/resume/mozilla.svg)"
-              ></div>
-              <time>August 2010</time>
-              <strong>Mozilla</strong>
-              <p>
-                I worked on the Firefox Add-Ons site as a web developer and
-                product manager.
-              </p>
-              <label>full time</label>
-            </div>
-            <div class="work-item work-item-5 work-item-gigaom">
-              <div class="work-dot"></div>
-              <div class="work-line"></div>
-              <div
-                class="logo"
-                style="background-image: url(/images/resume/gigaom.svg)"
-              ></div>
-              <time>June 2009</time>
-              <strong>GigaOM</strong>
-              <p>
-                GigaOM was a news organization focused technology and other
-                similar topics.
-              </p>
-              <label>internship</label>
-            </div>
-            <div class="work-item work-item-6 work-item-offbeatguides">
-              <div class="work-dot"></div>
-              <div class="work-line"></div>
-              <div
-                class="logo"
-                style="background-image: url(/images/resume/offbeatguides.svg)"
-              ></div>
-              <time>June 2008</time>
-              <strong>Offbeat Guides</strong>
-              <p>
-                This was the first startup I worked at! We built custom-made
-                physical travel guides.
-              </p>
-              <label>internship</label>
+            <div v-for="(t, idx) in timelineEntries" :key="t.id" :class="'work-item work-item-' + idx + (idx === 0 ? ' work-item-readme' : '')">
+              <time>{{ t.date_range }}</time>
+              <strong>{{ t.title }}</strong>
+              <p>{{ t.description }}</p>
+              <label>{{ t.type_label }}</label>
             </div>
           </div>
         </div>
@@ -3299,91 +2807,22 @@ h2 Founder, ReadMe-->
             </ul>
           </div>
         </div>
-        <div id="hover-readme">
-          <img src="images/readme.svg" />
-          <p>
-            Okay okay, I know there's a lot on this site. However, this is my
-            main passion! I'm the founder of ReadMe, a way to build interactive
-            API documentation!
-          </p>
+        <div id="hover-readme" v-cloak>
+          <p>{{ aboutData.bio_text }}</p>
           <div class="circle-green"></div>
           <div class="circle-yellow"></div>
           <div class="circle-red"></div>
-          <a class="btn" href="https://readme.com" target="_blank"
-            >Check out ReadMe</a
-          >
-          <div class="readme-devhub-parent">
-            <div class="readme-devhub"></div>
-          </div>
+          <a class="btn" :href="aboutData.github_url" target="_blank">{{ aboutData.github_btn_text || 'Check out my GitHub' }}</a>
         </div>
-        <div id="hover-writing">
+        <div id="hover-writing" v-cloak>
           <div class="paper"></div>
-          <div class="writing-header">Stuff I've Written</div>
-          <a
-            class="writing-post"
-            href="https://gkoberger.medium.com/five-years-time-6a6ae1157a66"
-          >
+          <div class="writing-header">My Learning Journey</div>
+          <a class="writing-post" v-for="w in writingEntries" :key="w.id" :href="w.link_url || '#'" target="_blank">
             <div>
-              <i class="fa fa-medium"></i>
-              <strong>5 Years Time</strong>
-              <span class="time">July 1 2015</span>
+              <i :class="'fa ' + (w.icon_class || 'fa-code')"></i>
+              <strong>{{ w.title }}</strong>
+              <span class="time">{{ w.year }}</span>
             </div>
-            <!--p= post.desc-->
-          </a>
-          <a
-            class="writing-post"
-            href="https://onezero.medium.com/the-design-of-everyday-escape-rooms-5536077abf91"
-          >
-            <div>
-              <i class="fa fa-medium"></i>
-              <strong>How to Build Your Own Escape Room</strong>
-              <span class="time">Jan 22 2020</span>
-            </div>
-            <!--p= post.desc-->
-          </a>
-          <a
-            class="writing-post"
-            href="https://news.ycombinator.com/item?id=23894816"
-          >
-            <div>
-              <i class="fa fa-hacker-news"></i>
-              <strong>Should you start a company?</strong>
-              <span class="time">July 10 2020</span>
-            </div>
-            <!--p= post.desc-->
-          </a>
-          <a
-            class="writing-post"
-            href="https://blog.readme.io/how-we-designed-our-interview-process/"
-          >
-            <div>
-              <i class="fa fa-book"></i>
-              <strong>Designing our interview process</strong>
-              <span class="time">Aug 24, 2016</span>
-            </div>
-            <!--p= post.desc-->
-          </a>
-          <a
-            class="writing-post"
-            href="https://news.ycombinator.com/item?id=14420972"
-          >
-            <div>
-              <i class="fa fa-hacker-news"></i>
-              <strong>Mozilla won the war</strong>
-              <span class="time">May 26, 2017</span>
-            </div>
-            <!--p= post.desc-->
-          </a>
-          <a
-            class="writing-post"
-            href="https://blog.readme.io/developing-company-culture-as-a-startup/"
-          >
-            <div>
-              <i class="fa fa-book"></i>
-              <strong>Challenge Coins and Company Credit</strong>
-              <span class="time">June 26, 2016</span>
-            </div>
-            <!--p= post.desc-->
           </a>
         </div>
         <div id="hover-dribbble">
@@ -3422,8 +2861,8 @@ h2 Founder, ReadMe-->
                 </g>
               </g>
             </svg>
-            <a id="dribbble-profile" href="https://dribbble.com/gkoberger">
-              <span>gkoberger &nbsp;</span>
+            <a id="dribbble-profile" href="https://dribbble.com/youralpha">
+              <span>youralpha &nbsp;</span>
               <svg
                 id="dn"
                 width="28px"
@@ -3463,83 +2902,10 @@ h2 Founder, ReadMe-->
               </svg>
             </a>
           </div>
-          <div class="item item-0">
-            <div
-              class="item-inside"
-              style="
-                background-image: url('https://cdn.dribbble.com/users/67215/screenshots/3521607/heart-withpop.gif');
-              "
-            ></div>
+          <div style="padding: 40px; text-align: center; color: #999;">
+            <p>Design portfolio coming soon!</p>
+            <p>Check out my <a href="https://github.com/AlphaIsYour" style="color: #388fea;">GitHub</a> for now.</p>
           </div>
-          <div class="item item-1">
-            <div
-              class="item-inside"
-              style="
-                background-image: url('https://cdn.dribbble.com/users/67215/screenshots/1977995/apis-ipas-dribbble_1x.png');
-              "
-            ></div>
-          </div>
-          <div class="item item-2">
-            <div
-              class="item-inside"
-              style="
-                background-image: url('https://cdn.dribbble.com/users/67215/screenshots/5698147/media/1aab82a12fe9186d19cc35319d9fd4d7.gif');
-              "
-            ></div>
-          </div>
-          <div class="item item-3">
-            <div
-              class="item-inside"
-              style="
-                background-image: url('https://cdn.dribbble.com/users/67215/screenshots/1281300/startupnotes.png');
-              "
-            ></div>
-          </div>
-          <div class="item item-4">
-            <div
-              class="item-inside"
-              style="
-                background-image: url('https://cdn.dribbble.com/users/67215/screenshots/1199589/pf_1x.png');
-              "
-            ></div>
-          </div>
-          <div class="item item-5">
-            <div
-              class="item-inside"
-              style="
-                background-image: url('https://cdn.dribbble.com/users/67215/screenshots/5697970/media/eb38f127e474c9cec9b9eb62045d503f.gif');
-              "
-            ></div>
-          </div>
-          <div class="item item-6">
-            <div
-              class="item-inside"
-              style="
-                background-image: url('https://cdn.dribbble.com/users/67215/screenshots/4346675/owlbert-password-lg_teaser.gif');
-              "
-            ></div>
-          </div>
-          <div class="item item-7">
-            <div
-              class="item-inside"
-              style="
-                background-image: url('https://cdn.dribbble.com/users/67215/screenshots/429360/sf.png');
-              "
-            ></div>
-          </div>
-          <!--+item('https://cdn.dribbble.com/users/67215/screenshots/3521607/heart-withpop.gif', 0)
-+item('https://cdn.dribbble.com/users/67215/screenshots/1977995/apis-ipas-dribbble_1x.png', 1)
-+item('https://cdn.dribbble.com/users/67215/screenshots/1451732/readme.png', 2)
-+item('https://cdn.dribbble.com/users/67215/screenshots/1281300/startupnotes.png', 3)
-+item('https://cdn.dribbble.com/users/67215/screenshots/1041634/greylocku.png', 1)
-+item('https://cdn.dribbble.com/users/67215/screenshots/429360/sf.png', 2)
-+item('https://cdn.dribbble.com/users/67215/screenshots/1199589/pf_1x.png', 3)
-+item('https://cdn.dribbble.com/users/67215/screenshots/1079484/staircar_1x.png', 4)
-+item('https://cdn.dribbble.com/users/67215/screenshots/1651043/dribbble-ribbonicons.png', 2)
-+item('https://cdn.dribbble.com/users/67215/screenshots/3475351/tellapart-f_teaser.gif', 3)
-+item('https://cdn.dribbble.com/users/67215/screenshots/1763002/startupnotes2014-inside_teaser.png', 4)
-+item('https://cdn.dribbble.com/users/67215/screenshots/4346675/owlbert-password-lg_teaser.gif', 5)
--->
         </div>
         <div id="hover-twitter">
           <div class="twitter-float">
@@ -3590,7 +2956,7 @@ h2 Founder, ReadMe-->
           <div class="tweets">
             <a
               class="tweet"
-              href="https://twitter.com/gkoberger/status/1108046737208459264?lang=en"
+              href="https://twitter.com/youralpha/status/1108046737208459264?lang=en"
             >
               <div class="bio">
                 <div class="avatar"></div>
@@ -4870,101 +4236,81 @@ h2 Founder, ReadMe-->
           <div class="text">
             <ul class="repos">
               <li>
-                <a class="repo-0" href="https://github.com/AlphaIsYour/tokoeno">
+                <a class="repo-0" href="https://github.com/AlphaIsYour/mindbridge-platform">
                   <div class="stars">
                     <div class="fa fa-star"></div>
-                    74
+                    0
                   </div>
                   <strong>
                     <em>AlphaIsYour</em>
-                    tokoeno
+                    mindbridge-platform
                   </strong>
-                  <p>
-                    Sorts an array by downloading snippets from StackOverflow.
-                    Inspired by http://xkcd.com/1185/. I'm sorry.
-                  </p>
+                  <p>Mental Health Consultation Platform - WordPress + Docker</p>
                 </a>
               </li>
               <li>
-                <a class="repo-1" href="https://github.com/mozilla//zamboni">
+                <a class="repo-1" href="https://github.com/AlphaIsYour/farmify">
                   <div class="stars">
                     <div class="fa fa-star"></div>
-                    234
+                    0
                   </div>
                   <strong>
                     <em>AlphaIsYour</em>
-                    zamboni
+                    farmify
                   </strong>
-                  <p>Backend for the Firefox Marketplace</p>
+                  <p>Smart Farming System with Laravel REST API & IoT</p>
                 </a>
               </li>
               <li>
-                <a
-                  class="repo-2"
-                  href="https://github.com/gkoberger/startupnotes"
-                >
+                <a class="repo-2" href="https://github.com/AlphaIsYour/bekasin">
                   <div class="stars">
                     <div class="fa fa-star"></div>
-                    65
+                    0
                   </div>
                   <strong>
                     <em>AlphaIsYour</em>
-                    startupnotes
+                    bekasin
                   </strong>
-                  <p>Notes from Y-Combinator's Startup School</p>
+                  <p>E-commerce for second-hand items - Next.js + TypeScript</p>
                 </a>
               </li>
               <li>
-                <a
-                  class="repo-3"
-                  href="https://github.com/AlphaIsYour/produckhunt"
-                >
+                <a class="repo-3" href="https://github.com/AlphaIsYour/leaderboard-koruptor">
                   <div class="stars">
                     <div class="fa fa-star"></div>
-                    4
+                    0
                   </div>
                   <strong>
                     <em>AlphaIsYour</em>
-                    produckhunt
+                    leaderboard-koruptor
                   </strong>
-                  <p>Play Duck Hunt with your iPhone</p>
+                  <p>Solidity smart contracts with Hardhat</p>
                 </a>
               </li>
               <li>
-                <a
-                  class="repo-4"
-                  href="https://github.com/AlphaIsYour/BugzillaJS"
-                >
+                <a class="repo-4" href="https://github.com/AlphaIsYour/youru-cinema">
                   <div class="stars">
                     <div class="fa fa-star"></div>
-                    18
+                    0
                   </div>
                   <strong>
                     <em>AlphaIsYour</em>
-                    BugzillaJS
+                    youru-cinema
                   </strong>
-                  <p>
-                    A userscript that adds additional functionality to bugzilla
-                  </p>
+                  <p>Next.js streaming app with Docker</p>
                 </a>
               </li>
               <li>
-                <a
-                  class="repo-5"
-                  href="https://github.com/AlphaIsYour/avataaars"
-                >
+                <a class="repo-5" href="https://github.com/AlphaIsYour/static-porto">
                   <div class="stars">
                     <div class="fa fa-star"></div>
-                    43
+                    0
                   </div>
                   <strong>
                     <em>AlphaIsYour</em>
-                    avataaars
+                    static-porto
                   </strong>
-                  <p>
-                    Renders Avataaars.com on the backend so you can use
-                    <img />tags
-                  </p>
+                  <p>This portfolio website - interactive desk illustration</p>
                 </a>
               </li>
             </ul>
@@ -5046,8 +4392,8 @@ h2 Founder, ReadMe-->
               i.far.fa-heart
               | 328
           .avatar
-          a(href="https://twitter.com/gkoberger")
-            span @gkoberger
+          a(href="https://twitter.com/youralpha")
+            span @youralpha
 
       if a.attachments_bottom
         if a.attachments_bottom_url
@@ -5064,19 +4410,5 @@ h2 Founder, ReadMe-->
       src="https://platform.twitter.com/widgets.js"
       charset="utf-8"
     ></script>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-142380-7"
-      defer
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "UA-142380-7");
-    </script>
   </body>
 </html>
