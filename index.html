@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <title>Youralpha</title>
@@ -65,7 +65,11 @@
       content="I'm Youralpha, an Information Technology student at Brawijaya University. I'm a developer and designer who loves building experiences (both online and off)!"
     />
     <meta name="twitter:image" content="images/embed.png" />
-    <style>[v-cloak] { display: none; }</style>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
   </head>
   <body class="preload hide-window">
     <div class="border"></div>
@@ -597,7 +601,7 @@ h2 Founder, ReadMe-->
             class="github hover"
             data-title="GitHub"
             data-hover="github"
-            data-position='{"bottom": 10, "right": 179}'
+            data-position='{"bottom": -80, "right": 179}'
             data-link="https://github.com/AlphaIsYour"
             data-link-text="@AlphaIsYour"
           >
@@ -802,8 +806,17 @@ h2 Founder, ReadMe-->
       </div>
       <div id="hover-new">
         <div id="hover-new-instagram" v-cloak>
-          <a class="item" v-for="ig in instagramPosts" :key="ig.id" :href="ig.post_url" target="_blank">
-            <div class="item-inside" :style="'background-image: url(' + ig.image_url + ')'"></div>
+          <a
+            class="item"
+            v-for="ig in instagramPosts"
+            :key="ig.id"
+            :href="ig.post_url"
+            target="_blank"
+          >
+            <div
+              class="item-inside"
+              :style="'background-image: url(' + ig.image_url + ')'"
+            ></div>
           </a>
           <div class="clearfix"></div>
         </div>
@@ -818,43 +831,80 @@ h2 Founder, ReadMe-->
             <div class="twitter-info">
               <i class="fa fa-twitter"></i>
               <strong>{{ profile.username || '@youralpha' }}</strong>
-              &middot;{{ (profile.followers || 0).toLocaleString() }} followers &middot;{{ (profile.tweet_count || 0).toLocaleString() }} tweets
+              &middot;{{ (profile.followers || 0).toLocaleString() }} followers
+              &middot;{{ (profile.tweet_count || 0).toLocaleString() }} tweets
             </div>
           </div>
           <div class="tweets">
-            <a class="tweet" v-for="t in tweets" :key="t.id" :href="t.tweet_url" target="_blank">
+            <a
+              class="tweet"
+              v-for="t in tweets"
+              :key="t.id"
+              :href="t.tweet_url"
+              target="_blank"
+            >
               <div class="bio">
                 <div class="avatar"></div>
                 <strong>{{ profile.username || '@youralpha' }} &nbsp;</strong>
                 {{ t.tweet_date }}
                 <div class="stats">
-                  <div class="t-retweet"><i class="fa fa-retweet"></i> {{ Number(t.retweets).toLocaleString() }}</div>
-                  <div class="t-like"><i class="fa fa-heart"></i> {{ Number(t.likes).toLocaleString() }}</div>
+                  <div class="t-retweet">
+                    <i class="fa fa-retweet"></i> {{
+                    Number(t.retweets).toLocaleString() }}
+                  </div>
+                  <div class="t-like">
+                    <i class="fa fa-heart"></i> {{
+                    Number(t.likes).toLocaleString() }}
+                  </div>
                 </div>
               </div>
-              {{ t.tweet_text }}<br/>
+              {{ t.tweet_text }}<br />
               <template v-if="t.images">
-                <img v-for="(img, i) in JSON.parse(t.images)" :key="i" :src="img" style="display:inline-block; width:74px; margin-top:20px;" />
+                <img
+                  v-for="(img, i) in JSON.parse(t.images)"
+                  :key="i"
+                  :src="img"
+                  style="display: inline-block; width: 74px; margin-top: 20px"
+                />
               </template>
             </a>
             <div class="follow-me">
-              Like what you see?<a class="btn" :href="'https://twitter.com/' + (profile.username || 'youralpha').replace('@','')">Follow {{ profile.username || '@youralpha' }} on Twitter</a>
+              Like what you see?<a
+                class="btn"
+                :href="'https://twitter.com/' + (profile.username || 'youralpha').replace('@','')"
+                >Follow {{ profile.username || '@youralpha' }} on Twitter</a
+              >
             </div>
           </div>
         </div>
       </div>
       <div id="modal-content">
         <div id="hover-projects" v-cloak>
-          <div class="project-major project-readme" v-if="featuredProject">
-            <a :href="featuredProject.url">
-              <i :class="'fas ' + featuredProject.icon_class" :style="'font-size: 48px; color: ' + featuredProject.icon_color"></i>
-              <p>{{ featuredProject.name }}</p>
+          <div
+            class="project-major"
+            v-for="fp in featuredProjects"
+            :key="fp.id"
+          >
+            <a :href="fp.url">
+              <i
+                :class="'icon ' + fp.icon_class"
+                :style="'font-size: 32px; color: ' + fp.icon_color"
+              ></i>
+              <p class="fp-name">{{ fp.name }}</p>
+              <p class="fp-desc">{{ fp.description }}</p>
             </a>
           </div>
           <div id="projects-list">
-            <div class="project-col" v-for="(col, idx) in projectColumns" :key="idx">
+            <div
+              class="project-col"
+              v-for="(col, idx) in projectColumns"
+              :key="idx"
+            >
               <a class="project" v-for="p in col" :key="p.id" :href="p.url">
-                <i :class="'icon ' + p.icon_class" :style="'color: ' + p.icon_color"></i>
+                <i
+                  :class="'icon ' + p.icon_class"
+                  :style="'color: ' + p.icon_color"
+                ></i>
                 <strong>{{ p.name }}</strong>
                 <p>{{ p.description }}</p>
               </a>
@@ -869,8 +919,7 @@ h2 Founder, ReadMe-->
               world.
             </div>
             <div class="media-el media-music">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -917,8 +966,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-tv">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -944,8 +992,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-article">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1005,8 +1052,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-tv">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1032,8 +1078,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-book">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1067,8 +1112,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-tv">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1098,8 +1142,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-music">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1145,8 +1188,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-article">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1202,8 +1244,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-youtube">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1239,8 +1280,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-tv">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1268,8 +1308,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-book">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1301,8 +1340,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-article">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1362,8 +1400,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-tv">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1391,8 +1428,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-music">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1436,8 +1472,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-book">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1473,8 +1508,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-youtube">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1506,8 +1540,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-article">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1570,8 +1603,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-tv">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1599,8 +1631,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-book">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1632,8 +1663,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-article">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1697,8 +1727,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-podcast">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1734,8 +1763,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-music">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1779,8 +1807,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-youtube">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1816,8 +1843,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-tv">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1843,8 +1869,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-podcast">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1880,8 +1905,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-tv">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1907,8 +1931,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-podcast">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -1944,8 +1967,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-article">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -2009,8 +2031,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-theater">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -2050,8 +2071,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-tv">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -2079,8 +2099,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-youtube">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -2112,8 +2131,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-book">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -2150,8 +2168,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-podcast">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -2187,8 +2204,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-tv">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -2214,8 +2230,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-book">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -2247,8 +2262,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-youtube">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -2280,8 +2294,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-article">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -2339,8 +2352,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-tv">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -2366,8 +2378,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-article">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -2427,8 +2438,7 @@ h2 Founder, ReadMe-->
               </p>
             </div>
             <div class="media-el media-theater">
-              <?xml
-                            version="1.0" encoding="utf-8"?>
+              <?xml version="1.0" encoding="utf-8"?>
               <!-- Generated by IcoMoon.io -->
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
               <svg
@@ -2475,13 +2485,20 @@ h2 Founder, ReadMe-->
         </div>
         <div id="hover-music" v-cloak>
           <div class="music">
-            <div class="m-bar" v-for="i in 51" :key="i" :style="'background-color: hsl(' + (290 + i * 2) + ', 70%, ' + (55 + i * 0.5) + '%)'"></div>
+            <div
+              class="m-bar"
+              v-for="i in 51"
+              :key="i"
+              :style="'background-color: hsl(' + (290 + i * 2) + ', 70%, ' + (55 + i * 0.5) + '%)'"
+            ></div>
           </div>
           <div v-for="track in tracks" :key="track.id">
             <a :href="track.spotify_url">
               <i class="far fa-play-circle"></i>
               <strong>{{ track.song }}</strong>
-              by {{ track.artist }} &nbsp;<time :datetime="track.played_at"></time>
+              by {{ track.artist }} &nbsp;<time
+                :datetime="track.played_at"
+              ></time>
             </a>
           </div>
         </div>
@@ -2489,7 +2506,16 @@ h2 Founder, ReadMe-->
           <div class="work-slider">
             <div id="work-history"></div>
             <div id="work-history-open"></div>
-            <div v-for="(t, idx) in timelineEntries" :key="t.id" :class="'work-item work-item-' + idx + (idx === 0 ? ' work-item-readme' : '')">
+            <div
+              v-for="(t, idx) in timelineEntries"
+              :key="t.id"
+              :class="'work-item work-item-' + idx + (idx === 0 ? ' work-item-readme' : '')"
+            >
+              <div
+                v-if="t.image_url"
+                class="logo"
+                :style="'background-image: url(' + t.image_url + ')'"
+              ></div>
               <time>{{ t.date_range }}</time>
               <strong>{{ t.title }}</strong>
               <p>{{ t.description }}</p>
@@ -2812,12 +2838,20 @@ h2 Founder, ReadMe-->
           <div class="circle-green"></div>
           <div class="circle-yellow"></div>
           <div class="circle-red"></div>
-          <a class="btn" :href="aboutData.github_url" target="_blank">{{ aboutData.github_btn_text || 'Check out my GitHub' }}</a>
+          <a class="btn" :href="aboutData.github_url" target="_blank"
+            >{{ aboutData.github_btn_text || 'Check out my GitHub' }}</a
+          >
         </div>
         <div id="hover-writing" v-cloak>
           <div class="paper"></div>
           <div class="writing-header">My Learning Journey</div>
-          <a class="writing-post" v-for="w in writingEntries" :key="w.id" :href="w.link_url || '#'" target="_blank">
+          <a
+            class="writing-post"
+            v-for="w in writingEntries"
+            :key="w.id"
+            :href="w.link_url || '#'"
+            target="_blank"
+          >
             <div>
               <i :class="'fa ' + (w.icon_class || 'fa-code')"></i>
               <strong>{{ w.title }}</strong>
@@ -2902,9 +2936,15 @@ h2 Founder, ReadMe-->
               </svg>
             </a>
           </div>
-          <div style="padding: 40px; text-align: center; color: #999;">
+          <div style="padding: 40px; text-align: center; color: #999">
             <p>Design portfolio coming soon!</p>
-            <p>Check out my <a href="https://github.com/AlphaIsYour" style="color: #388fea;">GitHub</a> for now.</p>
+            <p>
+              Check out my
+              <a href="https://github.com/AlphaIsYour" style="color: #388fea"
+                >GitHub</a
+              >
+              for now.
+            </p>
           </div>
         </div>
         <div id="hover-twitter">
@@ -4236,7 +4276,10 @@ h2 Founder, ReadMe-->
           <div class="text">
             <ul class="repos">
               <li>
-                <a class="repo-0" href="https://github.com/AlphaIsYour/mindbridge-platform">
+                <a
+                  class="repo-0"
+                  href="https://github.com/AlphaIsYour/mindbridge-platform"
+                >
                   <div class="stars">
                     <div class="fa fa-star"></div>
                     0
@@ -4245,7 +4288,9 @@ h2 Founder, ReadMe-->
                     <em>AlphaIsYour</em>
                     mindbridge-platform
                   </strong>
-                  <p>Mental Health Consultation Platform - WordPress + Docker</p>
+                  <p>
+                    Mental Health Consultation Platform - WordPress + Docker
+                  </p>
                 </a>
               </li>
               <li>
@@ -4275,7 +4320,10 @@ h2 Founder, ReadMe-->
                 </a>
               </li>
               <li>
-                <a class="repo-3" href="https://github.com/AlphaIsYour/leaderboard-koruptor">
+                <a
+                  class="repo-3"
+                  href="https://github.com/AlphaIsYour/leaderboard-koruptor"
+                >
                   <div class="stars">
                     <div class="fa fa-star"></div>
                     0
@@ -4288,7 +4336,10 @@ h2 Founder, ReadMe-->
                 </a>
               </li>
               <li>
-                <a class="repo-4" href="https://github.com/AlphaIsYour/youru-cinema">
+                <a
+                  class="repo-4"
+                  href="https://github.com/AlphaIsYour/youru-cinema"
+                >
                   <div class="stars">
                     <div class="fa fa-star"></div>
                     0
@@ -4301,7 +4352,10 @@ h2 Founder, ReadMe-->
                 </a>
               </li>
               <li>
-                <a class="repo-5" href="https://github.com/AlphaIsYour/static-porto">
+                <a
+                  class="repo-5"
+                  href="https://github.com/AlphaIsYour/static-porto"
+                >
                   <div class="stars">
                     <div class="fa fa-star"></div>
                     0
@@ -4316,7 +4370,7 @@ h2 Founder, ReadMe-->
             </ul>
             <div class="info">
               <a href="https://github.com/AlphaIsYour">@AlphaIsYour</a>
-              ·Joined Aug 2020 ·30 repos
+              ·Joined Aug 2020 ·70 repos
             </div>
           </div>
         </div>

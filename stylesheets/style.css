@@ -220,6 +220,7 @@ body {
   transition: background 0.3s ease-out;
   margin: 0;
 }
+html.nightmode,
 body.nightmode {
   background: #1c2a62;
 }
@@ -3017,9 +3018,11 @@ body.preload #content {
 }
 #hover-laptop {
   width: 680px;
-  height: 236px;
+  min-height: 236px;
+  height: auto;
   padding: 24px 0 24px 24px;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: visible;
 }
 #hover-laptop #work-history {
   background: #ecdbae;
@@ -3048,12 +3051,15 @@ body.preload #content {
   width: calc(100% - 700px);
 }
 #hover-laptop .work-slider {
-  width: 1960px;
+  width: max-content;
+  min-width: 100%;
   padding-top: 40px;
   position: relative;
+  display: flex;
+  flex-wrap: nowrap;
 }
 #hover-laptop .work-slider .work-item {
-  float: left;
+  flex-shrink: 0;
   width: 280px;
   padding-right: 30px;
   margin-left: 0;
@@ -3100,7 +3106,7 @@ body.preload #content {
   margin-top: 5px;
 }
 #hover-laptop .work-slider .work-item .logo {
-  width: 200px;
+  width: 155px;
   height: 30px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -4503,40 +4509,50 @@ body.preload #content {
 #hover-projects .project-major {
   width: 50%;
   float: left;
-  height: 85px;
-  margin-bottom: 30px;
+  height: 100px;
+  margin-bottom: 20px;
   padding: 0 10px;
 }
 #hover-projects .project-major a {
-  display: block;
-  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-radius: 8px;
   background: #388fea;
   height: 100%;
   width: 100%;
-  padding: 15px 0 0;
+  padding: 0 18px;
+  text-decoration: none;
+  transition: background 0.2s;
 }
-#hover-projects .project-major a p {
-  margin: 5px 0;
-  text-align: center;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.5);
+#hover-projects .project-major a:hover {
+  background: #2980b9;
+}
+#hover-projects .project-major a i {
+  flex-shrink: 0;
+}
+#hover-projects .project-major a .fp-name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-align: left;
+}
+#hover-projects .project-major a .fp-desc {
+  margin: 3px 0 0;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: left;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 #hover-projects .project-major a img {
   height: 32px;
   margin: auto;
   display: block;
-}
-#hover-projects .project-major.project-readme a {
-  background: #2283c9;
-}
-#hover-projects .project-major.project-readme a:hover {
-  background: #1f76b5;
-}
-#hover-projects .project-major.project-startupescape a {
-  background: #ff3c00;
-}
-#hover-projects .project-major.project-startupescape a:hover {
-  background: #e63600;
 }
 #hover-projects #projects-list {
   clear: both;

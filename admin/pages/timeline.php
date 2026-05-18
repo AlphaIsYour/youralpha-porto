@@ -1,6 +1,7 @@
 <?php
 // admin/pages/timeline.php - CRUD for timeline table
 require_once __DIR__ . '/../auth.php';
+require_once __DIR__ . '/../cloudinary.php';
 requireLogin();
 
 $db = getDB();
@@ -18,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title'] ?? '');
     $description = trim($_POST['description'] ?? '');
     $type_label = trim($_POST['type_label'] ?? '');
+    $image_url = trim($_POST['image_url'] ?? '');
     $sort_order = (int)($_POST['sort_order'] ?? 0);
     $edit_id = (int)($_POST['id'] ?? 0);
 
@@ -26,12 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $action = $edit_id ? 'edit' : 'add';
     } else {
         if ($edit_id > 0) {
-            $stmt = $db->prepare("UPDATE timeline SET date_range=?, title=?, description=?, type_label=?, sort_order=? WHERE id=?");
-            $stmt->execute([$date_range, $title, $description, $type_label, $sort_order, $edit_id]);
+            $stmt = $db->prepare("UPDATE timeline SET date_range=?, title=?, description=?, type_label=?, image_url=?, sort_order=? WHERE id=?");
+            $stmt->execute([$date_range, $title, $description, $type_label, $image_url ?: null, $sort_order, $edit_id]);
             $message = 'Timeline entry updated.';
         } else {
-            $stmt = $db->prepare("INSERT INTO timeline (date_range, title, description, type_label, sort_order) VALUES (?,?,?,?,?)");
-            $stmt->execute([$date_range, $title, $description, $type_label, $sort_order]);
+            $stmt = $db->prepare("INSERT INTO timeline (date_range, title, description, type_label, image_url, sort_order) VALUES (?,?,?,?,?,?)");
+            $stmt->execute([$date_range, $title, $description, $type_label, $image_url ?: null, $sort_order]);
             $message = 'Timeline entry added.';
         }
         $action = 'list';
@@ -66,6 +68,26 @@ if ($action === 'list') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timeline - Admin Panel</title>
     <link rel="stylesheet" href="../style.css">
+    <style>
+        .cloudinary-upload { margin-bottom: 16px; }
+        .upload-area {
+            width: 200px; height: 60px; border: 2px dashed #dcdfe6;
+            border-radius: 8px; overflow: hidden; cursor: pointer;
+            margin-bottom: 8px; background: #f8f9fa;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .upload-area:hover { border-color: #3498db; }
+        .upload-preview img {
+            max-width: 100%; max-height: 100%; object-fit: contain;
+        }
+        .upload-placeholder {
+            font-size: 0.75rem; color: #95a5a6; text-align: center;
+        }
+        .img-thumb {
+            width: 120px; height: 28px; object-fit: contain;
+            border-radius: 4px; background: #f8f9fa; padding: 2px;
+        }
+    </style>
 </head>
 <body>
     <aside class="sidebar">
@@ -84,7 +106,7 @@ if ($action === 'list') {
             <a href="github.php"><span class="nav-icon">&#9733;</span> GitHub</a>
             <a href="lastseen.php"><span class="nav-icon">&#9873;</span> Last Seen</a>
             <a href="config.php"><span class="nav-icon">&#9881;</span> Config</a>
-            <a href="password.php"><span class="nav-icon">&#9733;</span> Password</a>
+            <a href="../setup-totp.php"><span class="nav-icon">&#9733;</span> Authenticator</a>
         </nav>
         <div class="sidebar-footer"><a href="../dashboard.php?action=logout">Sign Out</a></div>
     </aside>
@@ -113,6 +135,7 @@ if ($action === 'list') {
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Logo</th>
                             <th>Date Range</th>
                             <th>Title</th>
                             <th>Description</th>
@@ -123,11 +146,18 @@ if ($action === 'list') {
                     </thead>
                     <tbody>
                         <?php if (empty($entries)): ?>
-                        <tr><td colspan="7" style="text-align:center; color:#95a5a6;">No timeline entries yet.</td></tr>
+                        <tr><td colspan="8" style="text-align:center; color:#95a5a6;">No timeline entries yet.</td></tr>
                         <?php else: ?>
                         <?php foreach ($entries as $e): ?>
                         <tr>
                             <td><?= $e['id'] ?></td>
+                            <td>
+                                <?php if (!empty($e['image_url'])): ?>
+                                    <img src="<?= htmlspecialchars($e['image_url']) ?>" class="img-thumb" alt="">
+                                <?php else: ?>
+                                    <span style="color:#ccc; font-size:0.8rem;">-</span>
+                                <?php endif; ?>
+                            </td>
                             <td><?= htmlspecialchars($e['date_range'] ?? '-') ?></td>
                             <td><strong><?= htmlspecialchars($e['title']) ?></strong></td>
                             <td><?= htmlspecialchars(mb_strimwidth($e['description'] ?? '', 0, 50, '...')) ?></td>
@@ -170,6 +200,10 @@ if ($action === 'list') {
                 <div class="form-group">
                     <label for="description">Description</label>
                     <textarea id="description" name="description" rows="3"><?= htmlspecialchars($entry['description'] ?? $_POST['description'] ?? '') ?></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Logo Image (persegi panjang, ~155x30px)</label>
+                    <?= cloudinaryUploadWidget('image_url', $entry['image_url'] ?? $_POST['image_url'] ?? null) ?>
                 </div>
                 <div class="form-group">
                     <label for="sort_order">Sort Order</label>

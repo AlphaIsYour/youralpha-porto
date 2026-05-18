@@ -2,6 +2,7 @@ $(window).on("load", function () {
   $("#night").click(function () {
     var toggle = $("body").hasClass("nightmode");
     $("body").toggleClass("nightmode");
+    $("html").toggleClass("nightmode");
 
     if (!toggle) {
       hide("greg-body", 0);
@@ -104,7 +105,7 @@ $(window).on("load", function () {
     function () {
       var $label = $("." + $(this).data("hover") + "-label");
       $label.hide();
-    }
+    },
   );
 
   $("#hover-new").click(function (e) {
@@ -140,7 +141,7 @@ $(window).on("load", function () {
           top: "auto",
           "transform-origin": "100% 100%",
         },
-        $el.data("position")
+        $el.data("position"),
       );
       $(".modal").append($("#hover-" + $el.data("hover")));
       $(".modal").addClass("is-" + $el.data("hover"));
@@ -181,7 +182,7 @@ $(window).on("load", function () {
       function () {
         var $label = $("." + $(this).data("hover") + "-label");
         $label.hide();
-      }
+      },
     );
   });
 
@@ -195,7 +196,7 @@ $(window).on("load", function () {
     function () {
       var $label = $(".window-label");
       $label.hide();
-    }
+    },
   );
 
   function animateArrow($label) {
@@ -214,13 +215,13 @@ $(window).on("load", function () {
         bezier: { values: path, type: "cubic" },
         ease: Linear.easeIn,
         repeat: 0,
-      }
+      },
     );
     TweenMax.fromTo(
       $label.find(".arrow-body"),
       0.3,
       { drawSVG: "0%" },
-      { drawSVG: "100%", ease: Linear.easeIn, repeat: 0 }
+      { drawSVG: "100%", ease: Linear.easeIn, repeat: 0 },
     );
   }
 
@@ -248,7 +249,7 @@ $(window).on("load", function () {
           ease: Power1.easeInOut,
           drawSVG: "0% 100%",
         },
-        "0"
+        "0",
       );
       tl.fromTo(
         $("#dribbble circle"),
@@ -264,7 +265,7 @@ $(window).on("load", function () {
           ease: Elastic.easeOut.config(1.5, 0.3),
           y: 0,
         },
-        "0.8"
+        "0.8",
       );
       tl.fromTo(
         $("#dn polyline"),
@@ -276,7 +277,7 @@ $(window).on("load", function () {
           ease: Power1.easeInOut,
           drawSVG: "0% 100%",
         },
-        "2"
+        "2",
       );
       tl.fromTo(
         "#dn circle",
@@ -290,7 +291,7 @@ $(window).on("load", function () {
           scale: 1,
           ease: Elastic.easeOut.config(1.7, 0.3),
         },
-        "2.8"
+        "2.8",
       );
     },
 
@@ -327,7 +328,7 @@ $(window).on("load", function () {
           y: 0,
           ease: Power1.easeIn,
         },
-        "0"
+        "0",
       );
 
       tl.fromTo(
@@ -344,7 +345,7 @@ $(window).on("load", function () {
           scaleY: 0.5,
           ease: Power1.easeIn,
         },
-        "0.2"
+        "0.2",
       );
       tl.fromTo(
         "#map-Page-1",
@@ -358,7 +359,7 @@ $(window).on("load", function () {
           scaleY: 1,
           ease: Power1.easeOut,
         },
-        ".5"
+        ".5",
       );
 
       tl.fromTo(
@@ -373,7 +374,7 @@ $(window).on("load", function () {
           scale: 1,
           ease: Back.easeOut.config(1.7),
         },
-        "-=0.4"
+        "-=0.4",
       );
       tl.fromTo(
         "#map-shadow",
@@ -387,7 +388,7 @@ $(window).on("load", function () {
           scale: 1,
           ease: Back.easeOut.config(2),
         },
-        "-=0.8"
+        "-=0.8",
       );
 
       tl.fromTo(
@@ -400,7 +401,7 @@ $(window).on("load", function () {
           ease: Power1.easeIn,
           drawSVG: "0% 100%",
         },
-        "-=0.8"
+        "-=0.8",
       );
 
       tl.fromTo(
@@ -413,7 +414,7 @@ $(window).on("load", function () {
           opacity: 1,
           ease: Power1.easeIn,
         },
-        "-=0.6"
+        "-=0.6",
       );
 
       TweenLite.set("#map", {
@@ -437,7 +438,7 @@ $(window).on("load", function () {
             ease: Power1.easeIn,
             drawSVG: "0% 100%",
           },
-          "maps+=" + 0.05 * i
+          "maps+=" + 0.05 * i,
         );
         first = false;
       }
@@ -452,7 +453,7 @@ $(window).on("load", function () {
           opacity: 1,
           ease: Power1.easeIn,
         },
-        "-=0.5"
+        "-=0.5",
       );
       tl.fromTo(
         $("#map-Path-3")[0],
@@ -464,7 +465,7 @@ $(window).on("load", function () {
           opacity: 1,
           ease: Power1.easeIn,
         },
-        "-=0.45"
+        "-=0.45",
       );
     },
   };
@@ -531,7 +532,7 @@ $(window).on("load", function () {
 
   var loc = {
     1: "Jember, ID",
-    2: "Lumajang, ID",
+    2: "Surabaya, ID",
     3: "Malang, ID",
   };
 
@@ -577,7 +578,7 @@ $(window).on("load", function () {
     function () {
       $(".modal-bg").addClass("modal-bg-hover");
       $(".close-modal").addClass("close-modal-hover");
-    }
+    },
   );
 
   var interval;
@@ -599,7 +600,7 @@ $(window).on("load", function () {
       //$('.tooltip').remove();
       $(".label").hide();
       $(".hover, .hover-new, .window").removeClass("hover-preview");
-    }
+    },
   );
 });
 
@@ -679,7 +680,7 @@ $(() => {
         for (let i = 0; i < post.attachments_overlay.length; i++) {
           if (
             post.attachments_overlay[i].filename.match(
-              /\.(png|svg|jpg|jpeg|gif)/
+              /\.(png|svg|jpg|jpeg|gif)/,
             )
           ) {
             if (
@@ -702,7 +703,7 @@ $(() => {
         for (let i = 0; i < post.attachments_bottom.length; i++) {
           if (
             post.attachments_bottom[i].filename.match(
-              /\.(png|svg|jpg|jpeg|gif)/
+              /\.(png|svg|jpg|jpeg|gif)/,
             )
           ) {
             if (JSON.stringify(post).match(/xkcd/))
@@ -742,7 +743,7 @@ $(() => {
               .map((url) => {
                 const u = url.match(/\[(.*)\]\((.*)\)/);
                 return { url: u[2], title: u[1] };
-              })
+              }),
           );
         }
 
@@ -784,7 +785,7 @@ $(() => {
         t = t.replace(/_(.*?)_/g, "<i>$1</i>");
         t = t.replace(
           /\[([^\]]+)\]\(([^\)]+)\)/g,
-          '<span href="$2" class="faux-link" target="_new" @mouseover="console.log(1);">$1</span>'
+          '<span href="$2" class="faux-link" target="_new" @mouseover="console.log(1);">$1</span>',
         );
         return `<p>${t.replace(/\n+/g, "</p><p>")}</p>`;
       },
@@ -834,31 +835,40 @@ function shuffle(array) {
 function start(page, time) {
   var $el = $("." + page);
   if ($el.data("bounce") === "up") {
-    setTimeout(function () {
-      $el.each(function () {
-        TweenLite.to($(this), 1, {
-          y: "0",
-          ease: Elastic.easeOut.config(1, 0.75),
+    setTimeout(
+      function () {
+        $el.each(function () {
+          TweenLite.to($(this), 1, {
+            y: "0",
+            ease: Elastic.easeOut.config(1, 0.75),
+          });
+          if ($(this).is(".fingers")) {
+            $(this).addClass("on");
+          }
         });
-        if ($(this).is(".fingers")) {
-          $(this).addClass("on");
-        }
-      });
-    }, time * 150 + 300);
+      },
+      time * 150 + 300,
+    );
   } else if ($el.data("bounce") === "up-slow") {
-    setTimeout(function () {
-      TweenLite.to($el, 1, {
-        y: "0",
-        opacity: 1,
-        ease: Elastic.easeOut.config(1, 1),
-      });
-    }, time * 150 + 300);
+    setTimeout(
+      function () {
+        TweenLite.to($el, 1, {
+          y: "0",
+          opacity: 1,
+          ease: Elastic.easeOut.config(1, 1),
+        });
+      },
+      time * 150 + 300,
+    );
   } else {
-    setTimeout(function () {
-      var tl = new TimelineMax();
-      tl.to($el, 0.4, { scale: 1.1, opacity: 1 });
-      tl.to($el, 0.1, { scale: 1, opacity: 1 });
-    }, time * 150 + 300);
+    setTimeout(
+      function () {
+        var tl = new TimelineMax();
+        tl.to($el, 0.4, { scale: 1.1, opacity: 1 });
+        tl.to($el, 0.1, { scale: 1, opacity: 1 });
+      },
+      time * 150 + 300,
+    );
   }
 }
 
@@ -878,7 +888,7 @@ function runAllAnimations() {
 
   if ($(".greg").width() === 0) {
     console.error(
-      "ERROR: Layout belum siap, container utama masih berukuran 0!"
+      "ERROR: Layout belum siap, container utama masih berukuran 0!",
     );
     return; // Jangan jalankan animasi jika layout belum siap
   }
@@ -976,7 +986,7 @@ $(window).on("load", function () {
         window.open(
           $("#edit").length
             ? $("#edit").val()
-            : "https://airtable.com/apptqNCgqWPkNhlp0/tblHS00KS9jhInDFu/viwKUkCPmljIPl0MI"
+            : "https://airtable.com/apptqNCgqWPkNhlp0/tblHS00KS9jhInDFu/viwKUkCPmljIPl0MI",
         );
       }
       return;
@@ -1088,21 +1098,21 @@ $(() => {
     0.3,
     {},
     { morphSVG: $("#stamp-stamp")[0], fill: "#04a3fa" },
-    0
+    0,
   );
   tl.fromTo(
     $("#stamp-l1"),
     0.3,
     { drawSVG: "50% 50%", opacity: 0 },
     { drawSVG: "0% 100%", opacity: 1 },
-    0
+    0,
   );
   tl.fromTo(
     $("#stamp-l2"),
     0.3,
     { drawSVG: "50% 50%", opacity: 0 },
     { drawSVG: "0% 100%", opacity: 1 },
-    0
+    0,
   );
   //tl.fromTo('#stamp-shade', 0.3, {opacity: 0}, { opacity: 1 }, 0);
   tl.pause();
@@ -1113,125 +1123,144 @@ $(() => {
     },
     () => {
       tl.reverse();
-    }
+    },
   );
 });
 
 // Dynamic content loading from API
-$(function() {
-  var API_BASE = '/api';
+$(function () {
+  var API_BASE = "/api";
 
   // Projects
-  if ($('#hover-projects').length) {
+  if ($("#hover-projects").length) {
     new Vue({
-      el: '#hover-projects',
+      el: "#hover-projects",
       data: { projects: [] },
       computed: {
-        featuredProject: function() {
-          return this.projects.find(function(p) { return p.is_featured == 1; }) || this.projects[0];
+        featuredProjects: function () {
+          return this.projects.filter(function (p) {
+            return p.is_featured == 1;
+          });
         },
-        otherProjects: function() {
-          return this.projects.filter(function(p) { return p.is_featured != 1; });
+        otherProjects: function () {
+          return this.projects.filter(function (p) {
+            return p.is_featured != 1;
+          });
         },
-        projectColumns: function() {
+        projectColumns: function () {
           var half = Math.ceil(this.otherProjects.length / 2);
-          return [this.otherProjects.slice(0, half), this.otherProjects.slice(half)];
-        }
+          return [
+            this.otherProjects.slice(0, half),
+            this.otherProjects.slice(half),
+          ];
+        },
       },
-      mounted: function() {
+      mounted: function () {
         var self = this;
-        axios.get(API_BASE + '/projects.php').then(function(r) { self.projects = r.data; });
-      }
+        axios.get(API_BASE + "/projects.php").then(function (r) {
+          self.projects = r.data;
+        });
+      },
     });
   }
 
   // About
-  if ($('#hover-readme').length) {
+  if ($("#hover-readme").length) {
     new Vue({
-      el: '#hover-readme',
+      el: "#hover-readme",
       data: { aboutData: {} },
-      mounted: function() {
+      mounted: function () {
         var self = this;
-        axios.get(API_BASE + '/about.php').then(function(r) { self.aboutData = r.data; });
-      }
+        axios.get(API_BASE + "/about.php").then(function (r) {
+          self.aboutData = r.data;
+        });
+      },
     });
   }
 
   // Writing
-  if ($('#hover-writing').length) {
+  if ($("#hover-writing").length) {
     new Vue({
-      el: '#hover-writing',
+      el: "#hover-writing",
       data: { writingEntries: [] },
-      mounted: function() {
+      mounted: function () {
         var self = this;
-        axios.get(API_BASE + '/writing.php').then(function(r) { self.writingEntries = r.data; });
-      }
+        axios.get(API_BASE + "/writing.php").then(function (r) {
+          self.writingEntries = r.data;
+        });
+      },
     });
   }
 
   // Instagram
-  if ($('#hover-new-instagram').length) {
+  if ($("#hover-new-instagram").length) {
     new Vue({
-      el: '#hover-new-instagram',
+      el: "#hover-new-instagram",
       data: { instagramPosts: [] },
-      mounted: function() {
+      mounted: function () {
         var self = this;
-        axios.get(API_BASE + '/instagram.php').then(function(r) { self.instagramPosts = r.data; });
-      }
+        axios.get(API_BASE + "/instagram.php").then(function (r) {
+          self.instagramPosts = r.data;
+        });
+      },
     });
   }
 
   // Timeline / Work history
-  if ($('#hover-laptop').length) {
+  if ($("#hover-laptop").length) {
     new Vue({
-      el: '#hover-laptop',
+      el: "#hover-laptop",
       data: { timelineEntries: [] },
-      mounted: function() {
+      mounted: function () {
         var self = this;
-        axios.get(API_BASE + '/timeline.php').then(function(r) { self.timelineEntries = r.data; });
-      }
+        axios.get(API_BASE + "/timeline.php").then(function (r) {
+          self.timelineEntries = r.data;
+        });
+      },
     });
   }
 
   // Music
-  if ($('#hover-music').length) {
+  if ($("#hover-music").length) {
     new Vue({
-      el: '#hover-music',
+      el: "#hover-music",
       data: { tracks: [] },
-      mounted: function() {
+      mounted: function () {
         var self = this;
-        axios.get(API_BASE + '/music.php').then(function(r) { self.tracks = r.data; });
-      }
+        axios.get(API_BASE + "/music.php").then(function (r) {
+          self.tracks = r.data;
+        });
+      },
     });
   }
 
   // Tweets
-  if ($('#hover-new-twitter').length) {
+  if ($("#hover-new-twitter").length) {
     new Vue({
-      el: '#hover-new-twitter',
+      el: "#hover-new-twitter",
       data: { tweets: [], profile: {} },
-      mounted: function() {
+      mounted: function () {
         var self = this;
-        axios.get(API_BASE + '/tweets.php').then(function(r) {
+        axios.get(API_BASE + "/tweets.php").then(function (r) {
           self.tweets = r.data.tweets || [];
           self.profile = r.data.profile || {};
         });
-      }
+      },
     });
   }
 
   // GitHub
-  if ($('#hover-github').length) {
+  if ($("#hover-github").length) {
     new Vue({
-      el: '#hover-github',
+      el: "#hover-github",
       data: { repos: [], profile: {} },
-      mounted: function() {
+      mounted: function () {
         var self = this;
-        axios.get(API_BASE + '/github.php').then(function(r) {
+        axios.get(API_BASE + "/github.php").then(function (r) {
           self.repos = r.data.repos || [];
           self.profile = r.data.profile || {};
         });
-      }
+      },
     });
   }
 });

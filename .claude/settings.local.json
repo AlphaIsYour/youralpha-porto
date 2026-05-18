@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git checkout *)",
+      "Bash(powershell *)",
+      "Bash(git add *)",
+      "Bash(git rm *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(php *)",
+      "Bash(del *)"
+    ]
+  }
+}

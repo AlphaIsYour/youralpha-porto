@@ -1,0 +1,4 @@
+# Protect sensitive files
+<FilesMatch "\.(env|key|log)$">
+    Deny from all
+</FilesMatch>

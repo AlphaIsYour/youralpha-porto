@@ -111,7 +111,7 @@ $ghProfile = $db->query("SELECT * FROM github_profile LIMIT 1")->fetch() ?: [
             <a href="github.php" class="active"><span class="nav-icon">&#9733;</span> GitHub</a>
             <a href="lastseen.php"><span class="nav-icon">&#9873;</span> Last Seen</a>
             <a href="config.php"><span class="nav-icon">&#9881;</span> Config</a>
-            <a href="password.php"><span class="nav-icon">&#9733;</span> Password</a>
+            <a href="../setup-totp.php"><span class="nav-icon">&#9733;</span> Authenticator</a>
         </nav>
         <div class="sidebar-footer"><a href="../dashboard.php?action=logout">Sign Out</a></div>
     </aside>

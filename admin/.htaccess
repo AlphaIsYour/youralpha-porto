@@ -1,0 +1,10 @@
+# Protect sensitive files from direct web access
+<FilesMatch "\.(key|log|sql|env)$">
+    Deny from all
+</FilesMatch>
+
+# Block access to migration/setup scripts (remove this block after setup is complete)
+<Files "migrate-totp.php">
+    Order Deny,Allow
+    Deny from all
+</Files>

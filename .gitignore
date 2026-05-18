@@ -1,0 +1,30 @@
+# Environment
+.env
+
+# TOTP encryption key
+admin/.totp_key
+
+# Setup/migration scripts (one-time use)
+setup.php
+admin/migrate-totp.php
+admin/show-totp.php
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Node (if any)
+node_modules/
+
+# Composer (if any)
+vendor/
